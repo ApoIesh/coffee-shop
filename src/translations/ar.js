@@ -1,12 +1,19 @@
 export default {
   lang: 'ar',
   currency: ' جنيه ',
-  
+
   back_icon: 'chevron-forward-sharp',
+  arrow_intro: 'arrow-long-left',
   icon_back: 'chevron-left',
   icon_forward: 'chevron-left',
-  arrow:"arrow-forward-sharp",
+  arrow: 'arrow-forward-sharp',
+  next_arrow: 'chevron-double-left',
+  back_arrow: 'chevron-double-right',
+  close: 'إغلاق',
+  select: 'اختار',
 
+
+  
   welcome_to: 'مرحبا بك في',
   next: 'التالي',
   back: 'السابق',

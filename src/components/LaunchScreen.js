@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, ImageBackground, StatusBar} from 'react-native';
-import styles, {black_color, hp, wp} from './Assets/style/styles';
+import {View} from 'react-native';
+import styles, {black_color} from './Assets/style/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {navigate, reset} from '../NavigationActions';
+import {reset} from '../NavigationActions';
 
 class LaunchScreen extends Component {
   constructor(props) {
@@ -12,15 +12,15 @@ class LaunchScreen extends Component {
   async componentDidMount() {
     try {
       const token = await AsyncStorage.getItem('token');
-      // console.log("0100",token);
+      // console.log("token",token);
       const Intro = await AsyncStorage.getItem('Intro');
-      const lang = await AsyncStorage.getItem('language');
+      const lang = await AsyncStorage.getItem('languageKey');
 
       if (token !== null) {
         reset('TabComponent');
       } else {
         if (Intro) {
-          reset('Register');
+          reset('SignIn');
         } else {
           AsyncStorage.setItem('Intro', 'true');
           reset('Intro');

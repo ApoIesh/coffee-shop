@@ -1,5 +1,13 @@
 import React from 'react';
-import {Text, StyleSheet, View, TextInput} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  TextInput,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from 'react-native';
 import {
   border_Color,
   wp,
@@ -15,6 +23,12 @@ import {
   gray_color,
   white_color,
 } from '../style/styles';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const Input = ({
   placeholder,
@@ -48,14 +62,16 @@ const Input = ({
   borderBottomWidth,
 }) => {
   const [isFocused, setFocused] = React.useState(false);
+
   return (
     <View>
       <View
         style={{
+          direction: 'rtl',
           flexDirection: flexDirection ? flexDirection : 'row',
-          alignSelf: alignSelf ? alignSelf : 'center',
+          alignSelf: alignSelf ? alignSelf : 'flex-start',
           alignItems: alignItems ? alignItems : 'center',
-          justifyContent: justifyContent ? justifyContent : 'center',
+          justifyContent: justifyContent ? justifyContent : 'space-between',
           borderColor: borderColor ? borderColor : border_Color,
           borderWidth: borderWidth ? borderWidth : 0,
 
@@ -72,8 +88,14 @@ const Input = ({
           multiline={multiline}
           numberOfLines={numberOfLines}
           editable={editable}
-          onBlur={() => setFocused(false)}
-          onFocus={() => setFocused(true)}
+          onBlur={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+              setFocused(false);
+          }}
+          onFocus={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+              setFocused(true);
+          }}
           placeholder={isFocused == false ? placeholder : null}
           secureTextEntry={secureTextEntry}
           maxLength={maxLength}
@@ -81,12 +103,13 @@ const Input = ({
           keyboardType={keyboardType}
           style={{
             flex: 1,
-            alignSelf:'flex-start',
+            alignSelf: 'flex-start',
             // width: width ? width : wp(70),
             color: color ? color : text_color,
             fontFamily: fontRegular,
             fontSize: wp(3.5),
             borderBottomWidth: borderBottomWidth ? borderBottomWidth : 0,
+            direction: 'rtl',
 
             // borderWidth: 1,
           }}
@@ -95,21 +118,20 @@ const Input = ({
           selectionColor={bluesky_color}
           placeholderTextColor={
             placeholderTextColor ? placeholderTextColor : placeholder_color
-            
           }
-          
         />
 
         {right ? right : <View />}
       </View>
-      <View
-        style={{
-          position: 'absolute',
-          marginStart: wp(6.5),
-          marginTop: hp(0.4),
-        }}>
-        {head_text ? (
-          isFocused == true || value ? (
+
+      {head_text ? (
+        isFocused == true || value ? (
+          <View
+            style={{
+              position: 'absolute',
+              marginStart: wp(6.5),
+              marginTop: hp(0.4),
+            }}>
             <Text
               style={{
                 fontFamily: fontLight,
@@ -118,9 +140,9 @@ const Input = ({
               }}>
               {head_text}
             </Text>
-          ) : null
-        ) : null}
-      </View>
+          </View>
+        ) : null
+      ) : null}
     </View>
   );
 };

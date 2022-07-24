@@ -66,7 +66,7 @@ class ItemDetails extends Component {
     //OTHER
     const icon_love = love == false ? 'heart-o' : 'heart';
     let shP = sel_shot == 1 ? 6 : null;
-    const total = DATA.value * sel_quantity + shP;
+    const total = DATA.value * sel_quantity + shP * sel_quantity;
     return (
       <View style={styles.container_black}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -286,29 +286,17 @@ class ItemDetails extends Component {
                 </ScrollView>
               </View>
             </View>
-            <View style={{marginVertical: hp(3)}}>
-              <Text style={styles.Bold_18pt_white}>{L.price}</Text>
-              <View style={{flexDirection: 'row', marginTop: hp(1)}}>
-                <Text style={{...styles.Bold_25pt_white, marginEnd: wp(2)}}>
-                  {total}
-                </Text>
-                <Text style={styles.Bold_25pt_white}>{L.currency}</Text>
-              </View>
-            </View>
           </View>
         </ScrollView>
 
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity>
-            <View style={styles.addCart_itemDetails}>
-              <FontAwesome5
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                style={{marginEnd: wp(3)}}
-                onPress={() => navigate('Notifications')}
-              />
-              <Text style={styles.Regular_14pt_white}>{L.add_cart}</Text>
+            <View style={styles.total_sec}>
+              <Text style={styles.Bold_18pt_white}>{L.total}</Text>
+              <Text style={styles.Bold_25pt_white}>
+                {total}
+                {L.currency}
+              </Text>
             </View>
           </TouchableOpacity>
 

@@ -21,7 +21,6 @@ class MoreMenu extends Component {
       userName: 'Mohammed ApoIesh',
       city: 'Mansoura',
       image: require('./Assets/image/ApoIesh.jpg'),
-      points: '820',
     };
   }
 
@@ -65,33 +64,6 @@ class MoreMenu extends Component {
             <View style={{marginTop: hp(2)}} />
 
             <View style={{alignSelf: 'center'}}>
-              <TouchableOpacity
-                activeOpacity={0.9}
-                onPress={() => navigate(L.home)}>
-                <View style={styles.sec_icons_menu}>
-                  <View style={styles.view_icon_menu}>
-                    <Image
-                      source={require('./Assets/image/home-tab.png')}
-                      style={styles.image_icon_menu}
-                    />
-                  </View>
-                  <Text style={styles.Regular_16pt_white}>{L.home}</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                activeOpacity={0.9}
-                onPress={() => navigate(L.Profile)}>
-                <View style={styles.sec_icons_menu}>
-                  <View style={styles.view_icon_menu}>
-                    <Image
-                      source={require('./Assets/image/profile-tab.png')}
-                      style={styles.image_icon_menu}
-                    />
-                  </View>
-                  <Text style={styles.Regular_16pt_white}>{L.Profile}</Text>
-                </View>
-              </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.9}>
                 <View style={styles.sec_icons_menu}>
                   <View style={styles.view_icon_menu}>
@@ -132,7 +104,7 @@ class MoreMenu extends Component {
               </TouchableOpacity>
               <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => reset('Register')}>
+                onPress={() => reset('SignIn')}>
                 <View style={styles.sec_icons_menu}>
                   <View style={styles.view_icon_menu}>
                     <Image
@@ -143,7 +115,9 @@ class MoreMenu extends Component {
                   <Text style={styles.Regular_16pt_white}>{L.Logout}</Text>
                 </View>
               </TouchableOpacity>
+              <View style={{marginTop: hp(2)}} />
             </View>
+
             <View
               style={{
                 borderWidth: wp(0.1),

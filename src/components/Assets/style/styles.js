@@ -599,6 +599,8 @@ const styles = StyleSheet.create({
     width: wp(92),
     alignSelf: 'center',
     borderRadius: wp(2),
+    flex: 1,
+    paddingTop: hp(10),
   },
   sec_info: {
     width: wp(70),
@@ -614,7 +616,7 @@ const styles = StyleSheet.create({
   if_you_have: {
     flexDirection: 'row',
     alignSelf: 'center',
-    marginTop: hp(5),
+    marginVertical: hp(5),
   },
   image_bg: {width: wp(100), height: hp(100), position: 'absolute'},
 
@@ -782,6 +784,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: wp(5.5),
     marginStart: wp(-2),
+    borderBottomWidth: 0.5,
   },
   titel_categorie: {
     flexDirection: 'row',
@@ -793,35 +796,31 @@ const styles = StyleSheet.create({
   //FlatList categories
 
   image_categorie_flat_home: {
-    width: wp(95),
-    height: hp(25),
-    resizeMode: 'cover',
+    width: wp(75),
+    height: hp(10),
+    resizeMode: 'contain',
     alignSelf: 'center',
-    borderWidth: wp(0.2),
+    borderWidth: wp(0.5),
     borderColor: white_color,
     borderRadius: wp(5),
+    borderTopRightRadius: 0,
   },
   white_view_flat_home: {
     backgroundColor: white_color,
     borderRadius: wp(5),
-    width: wp(80),
     alignSelf: 'center',
-    marginTop: hp(-6.5),
-  },
-  white_view_flat_home_1: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
+
   des_white_view_flat_home: {
     paddingStart: wp(5),
-    marginTop: hp(1.5),
-    width: wp(60),
+    marginTop: hp(0.5),
     alignItems: 'flex-start',
   },
-  des_flat_home: {lineHeight: wp(4.5), marginTop: wp(1)},
+  des_flat_home: {lineHeight: wp(4), marginVertical: wp(2), maxWidth: wp(70)},
+
   black_view_icon_flat_home: {
     backgroundColor: Primary_color,
-    height: hp(14.2),
     paddingHorizontal: wp(3.2),
     paddingVertical: hp(1.5),
     alignSelf: 'center',
@@ -832,11 +831,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  black_image_icon_flat_home: {
-    width: wp(13),
-    height: hp(12.7),
-    position: 'absolute',
-  },
+
   black_line_icon_flat_home: {
     borderWidth: wp(0.1),
     borderColor: light_gray_color,
@@ -844,16 +839,17 @@ const styles = StyleSheet.create({
   },
   black_view_value_flat_home: {
     backgroundColor: Primary_color,
-    width: wp(20),
-    height: hp(4),
+    paddingHorizontal: wp(4),
+    paddingVertical: wp(1),
     borderRadius: wp(5),
     borderColor: white_color,
     borderWidth: wp(0.5),
-    borderTopStartRadius: wp(0),
+    borderBottomStartRadius: wp(2),
+    borderBottomEndRadius: wp(2),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
+    alignSelf: 'center',
   },
   black_image_value_flat_home: {
     width: wp(18),
@@ -865,7 +861,7 @@ const styles = StyleSheet.create({
 
   view_1_flat_coffee: {
     marginTop: hp(5),
-    width: wp(92),
+    // width: wp(92),
     alignSelf: 'center',
   },
   view_2_flat_coffee: {
@@ -873,9 +869,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   image_flat_coffee: {
-    resizeMode: 'cover',
-    width: wp(30),
-    height: wp(35),
+    resizeMode: 'contain',
+    width: wp(50),
+    height: wp(50),
     borderRadius: wp(5),
     borderWidth: wp(0.4),
     borderColor: white_color,
@@ -883,16 +879,16 @@ const styles = StyleSheet.create({
 
   black_view_value_flat_coffee: {
     backgroundColor: Primary_color,
-    width: wp(17.85),
-    height: wp(7.5),
+    paddingHorizontal: wp(4),
+    paddingVertical: wp(1),
     borderRadius: wp(5),
     borderColor: white_color,
-    borderWidth: wp(0.4),
-    borderTopStartRadius: wp(0),
+    borderWidth: wp(0.5),
+    borderTopStartRadius: wp(2),
+    borderTopEndRadius: wp(2),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
   },
   black_image_value_flat_coffe: {
     width: wp(17),
@@ -900,14 +896,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   des_flat_coffee: {
-    width: wp(56),
-    flex: 1,
-    justifyContent: 'space-between',
     paddingVertical: hp(0.7),
+    flexDirection: 'column',
+    maxWidth: wp(30),
   },
   icon_view_flat_coffe: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
   icon_image_flat_coffe: {
     width: wp(4.4),
@@ -916,23 +912,35 @@ const styles = StyleSheet.create({
     // marginEnd: wp(2),
   },
   addCort_view_flat_coffee: {
-    borderWidth: wp(0.2),
     borderRadius: wp(7),
     borderColor: white_color,
-    paddingHorizontal: wp(8.5),
-    paddingVertical: hp(1.25),
+    paddingHorizontal: wp(5),
+    paddingVertical: hp(0.7),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomStartRadius: wp(2),
+    borderBottomEndRadius: wp(2),
+    backgroundColor: black_color,
+    elevation: wp(2),
+    shadowColor: white_color,
+    shadowOffset: {
+      width: wp(2),
+      height: wp(2),
+    },
+    shadowOpacity: wp(100),
   },
   love_icon_view_flat_coffee: {
-    borderWidth: wp(0.2),
     borderColor: white_color,
-    borderRadius: hp(10),
-    paddingHorizontal: hp(1.25),
-    paddingVertical: hp(1.25),
+    borderRadius: wp(9 / 2),
+    height: wp(9),
+    width: wp(9),
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'flex-end',
+    elevation: wp(2),
+    shadowColor: white_color,
+    backgroundColor: black_color,
   },
   line_end_flat_coffee: {
     borderWidth: wp(0.1),
@@ -1032,14 +1040,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp(13),
     alignSelf: 'flex-start',
-    position: 'absolute',
     alignItems: 'center',
     marginTop: hp(1),
   },
   line_profile: {
     borderWidth: wp(0.1),
     borderColor: '#424242',
-    marginTop: hp(4),
     marginBottom: hp(3),
   },
   sec_point_view: {
@@ -1065,7 +1071,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp(13.5),
     alignSelf: 'flex-start',
-    position: 'absolute',
     alignItems: 'flex-start',
     marginTop: hp(0.7),
   },
@@ -1105,12 +1110,13 @@ const styles = StyleSheet.create({
   view_icon_menu: {
     width: wp(14),
     height: wp(14),
-    backgroundColor: icons_bg_color,
+    backgroundColor: black_color,
+    shadowColor: light_gray_color,
+    elevation: wp(2),
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: wp(15 / 2),
     marginEnd: wp(4),
-    // marginStart: wp(-5),
   },
   image_icon_menu: {
     resizeMode: 'contain',
@@ -1254,13 +1260,13 @@ const styles = StyleSheet.create({
     borderRadius: wp(3.5 / 2),
   },
   addCart_itemDetails: {
-    alignSelf: 'flex-end',
-    flexDirection: 'row',
+    // alignSelf: 'flex-end',
+    // flexDirection: 'row',
     width: wp(40),
     height: hp(7),
-    paddingStart: wp(4),
+    // paddingStart: wp(4),
     alignContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'flex-start',
   },
   checkoutItemDetails: {
@@ -1432,13 +1438,13 @@ const styles = StyleSheet.create({
     marginTop: hp(2.5),
     justifyContent: 'space-between',
   },
-  pro_check_sec:{
+  pro_check_sec: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'center',
     marginTop: hp(3),
   },
-  total_sec_check:{
+  total_sec_check: {
     alignSelf: 'flex-start',
     flexDirection: 'column',
     width: wp(40),
@@ -1449,7 +1455,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-around',
   },
-  pro_buttonCheck:{
+  pro_buttonCheck: {
     backgroundColor: white_color,
     flexDirection: 'row',
     width: wp(56),
@@ -1486,8 +1492,8 @@ const styles = StyleSheet.create({
   renderLinecheckout: {borderBottomWidth: 0.2, borderColor: light_gray_color},
   cardItem: {flexDirection: 'row', justifyContent: 'space-between'},
   imageCartView: {
-    borderRadius: wp(27 / 2),
-    elevation: wp(0.5),
+    borderRadius: wp(7),
+    elevation: wp(2),
     shadowColor: white_color,
     backgroundColor: black_color,
     alignItems: 'center',
@@ -1497,7 +1503,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     width: wp(27),
     height: wp(27),
-    borderRadius: wp(27 / 2),
+    borderRadius: wp(7),
   },
   detil_secCart: {
     flexDirection: 'column',

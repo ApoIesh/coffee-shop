@@ -7,6 +7,9 @@ import {
   ScrollView,
   FlatList,
   TextInput,
+  LayoutAnimation,
+  Platform,
+  UIManager,
 } from 'react-native';
 import styles, {
   black_color,
@@ -18,6 +21,12 @@ import styles, {
 import {L} from '../config';
 import {navigate} from '../NavigationActions';
 import Icon from './Assets/common/Icon';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 class Checkout extends Component {
   constructor(props) {
@@ -40,8 +49,8 @@ class Checkout extends Component {
         },
         {
           image: require('./Assets/image/dsc_08487.png'),
-          name: 'إسبرسو',
-          description: 'استمتع بطعم القهوة الطبيعية ليوم أفضل',
+          name: 'Espresso',
+          description: 'Enjoy the taste of natural coffee for a better day',
           value: '27',
         },
       ],
@@ -49,6 +58,13 @@ class Checkout extends Component {
   }
 
   renderCheckoutItems = ({item, index}) => {
+    let {DATA} = this.state;
+
+    const close = () => {
+      let filteredItems = DATA.filter((item, Index) => Index != index);
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+        this.setState({DATA: filteredItems});
+    };
     return (
       <View style={{marginTop: hp(1.5)}}>
         <View style={styles.render_sec}>
@@ -65,6 +81,19 @@ class Checkout extends Component {
               <Text style={styles.Bold_14pt_white}>{L.currency}</Text>
             </View>
           </View>
+        </View>
+        <View
+          style={{
+            alignSelf: 'flex-end',
+            position: 'absolute',
+          }}>
+          <Icon
+            type={'AntDesign'}
+            name="close"
+            size={wp(4)}
+            color={white_color}
+            onPress={() => close.call(this)}
+          />
         </View>
         <View style={styles.renderLinecheckout} />
       </View>
@@ -136,6 +165,7 @@ class Checkout extends Component {
             <Text style={[styles.Bold_18pt_white, {marginTop: hp(3)}]}>
               {L.Items}
             </Text>
+
             <FlatList
               data={DATA}
               showsVerticalScrollIndicator={false}

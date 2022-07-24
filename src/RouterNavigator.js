@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ForgetPassword from './components/ForgetPassword';
 import Profile from './components/Profile';
@@ -21,11 +20,9 @@ import styles, {
   white_color,
   wp,
 } from './components/Assets/style/styles';
-import Register from './components/Register';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import VarifyCode from './components/VarifyCode';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Coffee from './components/Coffee';
 import Store from './components/Store';
 import MoreMenu from './components/MoreMenu';
@@ -37,6 +34,7 @@ import Checkout from './components/Checkout';
 import OrderHistory from './components/OrderHistory';
 import FailedRequest from './components/FailedRequest';
 import SuccessRequest from './components/SuccessRequest';
+import Icon from './components/Assets/common/Icon';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -112,7 +110,8 @@ function TabComponent() {
               activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
               style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <FontAwesome5
+              <Icon
+                type={'FontAwesome5'}
                 size={wp(5.5)}
                 name="shopping-bag"
                 color={white_color}
@@ -147,7 +146,8 @@ function TabComponent() {
           headerTitleAlign: 'center',
           headerRight: () => (
             <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <FontAwesome5
+              <Icon
+                type={'FontAwesome5'}
                 size={wp(5.5)}
                 name="shopping-bag"
                 color={white_color}
@@ -167,6 +167,7 @@ function TabComponent() {
               style={{
                 width: wp(4.3),
                 height: wp(4.3),
+                resizeMode: 'contain',
                 tintColor: focused ? white_color : gray_color,
               }}
             />
@@ -181,7 +182,8 @@ function TabComponent() {
           headerTitleAlign: 'center',
           headerRight: () => (
             <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <FontAwesome5
+              <Icon
+                type={'FontAwesome5'}
                 size={wp(5.5)}
                 name="shopping-bag"
                 color={white_color}
@@ -217,7 +219,8 @@ function TabComponent() {
           headerTitleAlign: 'center',
           headerRight: () => (
             <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <FontAwesome5
+              <Icon
+                type={'FontAwesome5'}
                 size={wp(5.5)}
                 name="shopping-bag"
                 color={white_color}
@@ -234,7 +237,7 @@ function TabComponent() {
 export default function RouterNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName={'LaunchScreen'}
+      // initialRouteName={'TabComponent'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen
         component={LaunchScreen}
@@ -242,11 +245,6 @@ export default function RouterNavigator() {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen
-        component={Register}
-        name="Register"
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         component={Intro}
         name="Intro"
@@ -294,24 +292,22 @@ export default function RouterNavigator() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <View>
-              <FontAwesome5
-                size={wp(5)}
-                name={L.icon_back}
-                color={white_color}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
+            <Icon
+              type={'FontAwesome5'}
+              size={wp(5)}
+              name={L.icon_back}
+              color={white_color}
+              onPress={() => navigation.goBack()}
+            />
           ),
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-              <FontAwesome5
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
-              />
-            </View>
+            <Icon
+              type={'FontAwesome5'}
+              size={wp(5.5)}
+              name="shopping-bag"
+              color={white_color}
+              onPress={() => navigate(L.cart)}
+            />
           ),
         })}
       />
@@ -337,7 +333,8 @@ export default function RouterNavigator() {
           headerTintColor: black_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -345,14 +342,13 @@ export default function RouterNavigator() {
             />
           ),
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-              <FontAwesome5
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
-              />
-            </View>
+            <Icon
+              type={'FontAwesome5'}
+              size={wp(5.5)}
+              name="shopping-bag"
+              color={white_color}
+              onPress={() => navigate(L.cart)}
+            />
           ),
         })}
       />
@@ -370,7 +366,8 @@ export default function RouterNavigator() {
           headerTintColor: black_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -378,14 +375,13 @@ export default function RouterNavigator() {
             />
           ),
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-              <FontAwesome5
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
-              />
-            </View>
+            <Icon
+              type={'FontAwesome5'}
+              size={wp(5.5)}
+              name="shopping-bag"
+              color={white_color}
+              onPress={() => navigate(L.cart)}
+            />
           ),
         })}
       />
@@ -403,7 +399,8 @@ export default function RouterNavigator() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -411,14 +408,13 @@ export default function RouterNavigator() {
             />
           ),
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-              <Ionicons
-                size={wp(5.5)}
-                name={'notifications-sharp'}
-                color={white_color}
-                onPress={() => navigate('Notifications')}
-              />
-            </View>
+            <Icon
+              type={'Ionicons'}
+              size={wp(5.5)}
+              name={'notifications-sharp'}
+              color={white_color}
+              onPress={() => navigate('Notifications')}
+            />
           ),
         })}
       />
@@ -436,7 +432,8 @@ export default function RouterNavigator() {
           headerTintColor: black_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -459,7 +456,8 @@ export default function RouterNavigator() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -467,7 +465,8 @@ export default function RouterNavigator() {
             />
           ),
           headerRight: () => (
-            <Ionicons
+            <Icon
+              type={'Ionicons'}
               size={wp(5.5)}
               name={'notifications-sharp'}
               color={white_color}
@@ -490,7 +489,8 @@ export default function RouterNavigator() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <FontAwesome5
+            <Icon
+              type={'FontAwesome5'}
               size={wp(5)}
               name={L.icon_back}
               color={white_color}
@@ -498,7 +498,8 @@ export default function RouterNavigator() {
             />
           ),
           headerRight: () => (
-            <Ionicons
+            <Icon
+              type={'Ionicons'}
               size={wp(5.5)}
               name={'notifications-sharp'}
               color={white_color}
@@ -513,9 +514,7 @@ export default function RouterNavigator() {
         component={FailedRequest}
         options={{
           headerShadowVisible: false,
-          headerTitleStyle: {
-            color: '#000',
-          },
+          headerTitleStyle: {color: '#000'},
         }}
       />
 
@@ -524,9 +523,7 @@ export default function RouterNavigator() {
         component={SuccessRequest}
         options={{
           headerShadowVisible: false,
-          headerTitleStyle: {
-            color: '#000',
-          },
+          headerTitleStyle: {color: '#000'},
         }}
       />
 
@@ -535,9 +532,7 @@ export default function RouterNavigator() {
         component={Settings}
         options={{
           headerShadowVisible: false,
-          headerTitleStyle: {
-            color: '#000',
-          },
+          headerTitleStyle: {color: '#000'},
         }}
       />
 

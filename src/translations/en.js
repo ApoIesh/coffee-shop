@@ -3,9 +3,14 @@ export default {
   currency: ' EGP ',
 
   back_icon: 'chevron-back-outline',
+  arrow_intro: 'arrow-long-right',
   icon_back: 'chevron-left',
   icon_forward: 'chevron-right',
   arrow: 'arrow-back-sharp',
+  next_arrow: 'chevron-double-right',
+  back_arrow: 'chevron-double-left',
+  close: 'Close',
+  select: 'Select',
 
   welcome_to: 'Welcome To',
   next: 'Next',

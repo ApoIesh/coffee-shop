@@ -37,16 +37,20 @@ class OrderDetails extends Component {
       <View style={styles.container_black}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.view_92}>
-            <View style={styles.imageOrder_sec}>
-              <Image source={DATA.image} style={styles.imageOrder} />
-              <View style={{justifyContent: 'flex-end'}}>
-                <View style={styles.salryOrder_sec}>
-                  <ImageBackground
-                    borderRadius={wp(5)}
-                    resizeMode={'cover'}
-                    source={require('./Assets/image/group_2976.png')}
-                    style={styles.imageSalryOrder}
-                  />
+            <View>
+              <Image
+                source={require('./Assets/image/dsc_08487.png')}
+                style={{
+                  resizeMode: 'contain',
+                  width: wp(92),
+                  height: wp(50),
+                  borderRadius: wp(5),
+                  borderWidth: wp(0.4),
+                  borderColor: white_color,
+                }}
+              />
+              <View style={{position: 'absolute', alignSelf: 'center'}}>
+                <View style={styles.black_view_value_flat_coffee}>
                   <Text style={[styles.AltBold_10pt_white, {marginEnd: wp(1)}]}>
                     {DATA.value}
                   </Text>

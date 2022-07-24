@@ -34,23 +34,8 @@ class SignUp extends Component {
 
     return (
       <View style={styles.container_Primary}>
-        <ImageBackground
-          source={require('./Assets/image/login-pattern.png')}
-          style={styles.image_bg}
-        />
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.logo_text}>
-            <Text style={styles.custom_light_white_2}>{L.welcome_to}</Text>
-            <Text style={styles.custom_bold_white_2}>{'Cafe'}</Text>
-          </View>
-
-          <View
-            style={{
-              backgroundColor: white_color,
-              width: wp(92),
-              alignSelf: 'center',
-              borderRadius: wp(2),
-            }}>
+        <View style={styles.white_view_style}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.view_88}>
               <Text style={styles.Extrabold_20pt_black}>
                 {L.Code_Verification}
@@ -88,22 +73,11 @@ class SignUp extends Component {
 
               <Button
                 activeOpacity={1}
-                marginTop={hp(1)}
+                marginTop={hp(10)}
                 width={wp(80)}
                 height={hp(7.5)}
                 label={L.verify_code}
-                image={
-                  <ImageBackground
-                    resizeMode="cover"
-                    source={require('./Assets/image/group_2976.png')}
-                    borderRadius={wp(10)}
-                    style={{
-                      width: wp(80),
-                      height: hp(7),
-                      position: 'absolute',
-                    }}
-                  />
-                }
+                onPress={() => navigate('SignIn')}
               />
               <TouchableOpacity>
                 <View style={styles.ressend_code}>
@@ -114,8 +88,8 @@ class SignUp extends Component {
                 </View>
               </TouchableOpacity>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
     );
   }

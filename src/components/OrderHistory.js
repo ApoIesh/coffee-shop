@@ -29,7 +29,7 @@ class OrderHistory extends Component {
           name: 'Latte',
           description: 'Enjoy the taste of natural coffee for a better day',
           currency: 'EGP',
-          value: '27',
+          value: '50',
         },
         {
           image: require('./Assets/image/dsc_08487.png'),
@@ -41,6 +41,7 @@ class OrderHistory extends Component {
       ],
     };
   }
+
   renderOrder = ({item, index}) => {
     return (
       <View

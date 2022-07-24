@@ -44,18 +44,6 @@ class Profile extends Component {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.view_92}>
             <View style={{marginTop: hp(7.4)}}>
-              <TouchableOpacity
-                activeOpacity={0.9}
-                onPress={() => navigate(L.edit_profile)}>
-                <View style={styles.sec_edit_profile}>
-                  <Feather name="edit-3" size={wp(3.5)} color={white_color} />
-                  <Text
-                    style={[styles.Regular_12pt_white, {marginStart: wp(2.5)}]}>
-                    {L.edit}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-
               <View style={styles.sec_image}>
                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Image
@@ -75,6 +63,18 @@ class Profile extends Component {
                 {city}
               </Text>
             </View>
+            
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate(L.edit_profile)}>
+              <View style={styles.sec_edit_profile}>
+                <Feather name="edit-3" size={wp(3.5)} color={white_color} />
+                <Text
+                  style={[styles.Regular_12pt_white, {marginStart: wp(2.5)}]}>
+                  {L.edit}
+                </Text>
+              </View>
+            </TouchableOpacity>
 
             <View style={styles.line_profile} />
 

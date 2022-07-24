@@ -6,6 +6,9 @@ import {
   Text,
   ImageBackground,
   ScrollView,
+  LayoutAnimation,
+  Platform,
+  UIManager,
 } from 'react-native';
 import {L} from '../config';
 import styles, {
@@ -21,7 +24,19 @@ import {navigate} from '../NavigationActions';
 import {Button, Input} from './Assets/common/';
 import Icon from './Assets/common/Icon';
 
-class SignUp extends Component {
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
+if (Platform.OS === 'ios') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,19 +58,11 @@ class SignUp extends Component {
 
     return (
       <View style={styles.container_Primary}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.logo_text}>
-            <Text style={styles.custom_light_white_2}>{L.welcome_to}</Text>
-            <Text style={styles.custom_bold_white_2}>{'Cafe'}</Text>
-          </View>
-
-          <View style={styles.white_view_style}>
+        <View style={styles.white_view_style}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.view_88}>
-              <Text style={styles.Extrabold_20pt_black}>{L.sign_in}</Text>
               <View style={styles.sec_info}>
-                <Text style={[styles.Light_12pt_gray, {lineHeight: wp(5)}]}>
-                  {L.Please_fill}
-                </Text>
+                <Text style={styles.Extrabold_20pt_black}>{L.sign_in}</Text>
               </View>
 
               <Input
@@ -75,7 +82,7 @@ class SignUp extends Component {
                 secureTextEntry={password_secure}
                 right={
                   <Icon
-                  type={"Feather"}
+                    type={'Feather'}
                     onPress={() =>
                       this.setState({password_secure: !password_secure})
                     }
@@ -89,7 +96,12 @@ class SignUp extends Component {
               <View style={styles.sec_agree_signIn}>
                 <View style={styles.sec_agree_signIn_1}>
                   <TouchableOpacity
-                    onPress={() => this.setState({agrre: !agrre})}
+                    onPress={() => {
+                      LayoutAnimation.configureNext(
+                        LayoutAnimation.Presets.linear,
+                      ),
+                        this.setState({agrre: !agrre});
+                    }}
                     activeOpacity={0.9}
                     style={{
                       ...styles.sec_agree_signIn_2,
@@ -123,21 +135,9 @@ class SignUp extends Component {
               <Button
                 onPress={() => navigate('TabComponent')}
                 activeOpacity={1}
-                marginTop={hp(2)}
+                marginTop={hp(10)}
                 width={wp(80)}
                 label={L.sign_in}
-                image={
-                  <ImageBackground
-                    resizeMode="cover"
-                    source={require('./Assets/image/group_2976.png')}
-                    borderRadius={wp(10)}
-                    style={{
-                      width: wp(80),
-                      height: hp(7),
-                      position: 'absolute',
-                    }}
-                  />
-                }
               />
               <View style={styles.if_you_have}>
                 <Text style={styles.Light_12pt_black}>
@@ -151,14 +151,12 @@ class SignUp extends Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-              <View style={{height: hp(13)}} />
             </View>
-          </View>
-          <View style={{height: hp(15)}} />
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
     );
   }
 }
 
-export default SignUp;
+export default SignIn;

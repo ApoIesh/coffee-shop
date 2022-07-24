@@ -62,22 +62,6 @@ class EditProfile extends Component {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.view_92}>
             <View style={{marginTop: hp(8)}}>
-              <TouchableOpacity
-                activeOpacity={0.9}
-                onPress={() => navigate(L.Profile)}
-                style={styles.done}>
-                <Icon
-                  type={'Feather'}
-                  name="check"
-                  size={wp(4)}
-                  color={white_color}
-                />
-                <Text
-                  style={[styles.Regular_12pt_white, {marginStart: wp(2.5)}]}>
-                  {L.done}
-                </Text>
-              </TouchableOpacity>
-
               <View style={styles.sec_image}>
                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
                   <Image
@@ -111,6 +95,21 @@ class EditProfile extends Component {
                 </View>
               </View>
             </View>
+            
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate(L.Profile)}
+              style={styles.done}>
+              <Icon
+                type={'Feather'}
+                name="check"
+                size={wp(4)}
+                color={white_color}
+              />
+              <Text style={[styles.Regular_12pt_white, {marginStart: wp(2.5)}]}>
+                {L.done}
+              </Text>
+            </TouchableOpacity>
 
             <View style={styles.line_profile} />
 

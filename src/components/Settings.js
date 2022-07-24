@@ -7,7 +7,7 @@ import styles, {
   white_color,
   wp,
 } from './Assets/style/styles';
-import {changeLng, L} from '../config';
+import {changeLaguage, changeLng, L} from '../config';
 import {navigate} from '../NavigationActions';
 
 class Settings extends Component {
@@ -19,11 +19,8 @@ class Settings extends Component {
     };
   }
 
-  checkLang(lang) {
-    changeLng(lang, 1);
-    if (L.lang == lang) {
-      navigate('LaunchScreen');
-    }
+  checkLang(languageKey) {
+    changeLaguage(languageKey);
   }
 
   render() {

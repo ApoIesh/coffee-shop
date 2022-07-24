@@ -6,6 +6,9 @@ import {
   Text,
   Image,
   ImageBackground,
+  Platform,
+  UIManager,
+  LayoutAnimation,
 } from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {L} from '../config';
@@ -18,6 +21,13 @@ import styles, {
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {navigate} from '../NavigationActions';
+import Icon from './Assets/common/Icon';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 class Intro extends Component {
   constructor(props) {
@@ -29,13 +39,13 @@ class Intro extends Component {
       activeIndex: 0,
       data: [
         {
-          image: require('./Assets/image/mug.png'),
+          image: require('./Assets/image/coffee-tab.png'),
           titel: "Order The Best Coffee's",
           description:
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ',
         },
         {
-          image: require('./Assets/image/coffee-tab.png'),
+          image: require('./Assets/image/mug.png'),
           titel: "Order The Best Coffee's",
           description:
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ',
@@ -127,26 +137,32 @@ class Intro extends Component {
     const {activeSlide, data} = this.state;
     return (
       <View style={styles.container_Primary}>
-        <ImageBackground
-          source={require('./Assets/image/login-pattern.png')}
-          resizeMode={'stretch'}
-          style={styles.image_bg_intro}
-        />
-
+        <View
+          style={{
+            position: 'absolute',
+          }}>
+          {this.pagination}
+        </View>
         {activeSlide > 0 ? (
-          <TouchableOpacity onPress={() => navigate('Register')}>
-            <View style={styles.button_intro_view_skip}>
-              <View style={styles.button_intro_view_skipTop}>
-                <Text style={styles.Regular_16pt_white}>{L.skip}</Text>
-                <Entypo
-                  name="arrow-long-right"
-                  size={wp(2.7)}
-                  color={white_color}
-                  style={{marginStart: wp(2)}}
-                />
+          (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+          (
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate('SignIn')}>
+              <View style={styles.button_intro_view_skip}>
+                <View style={styles.button_intro_view_skipTop}>
+                  <Text style={styles.Regular_16pt_white}>{L.skip}</Text>
+                  <Icon
+                    type={'Entypo'}
+                    name={L.arrow_intro}
+                    size={wp(2.7)}
+                    color={white_color}
+                    style={{marginStart: wp(2)}}
+                  />
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          ))
         ) : (
           <View style={{height: hp(6)}} />
         )}
@@ -165,16 +181,18 @@ class Intro extends Component {
           renderItem={this.renderItem}
           onSnapToItem={item => this.setState({activeSlide: item})}
         />
-        <View>{this.pagination}</View>
 
         <View style={styles.button_intro_view_1}>
           <View style={styles.button_intro_view_2}>
             {activeSlide == 0 ? (
-              <TouchableOpacity onPress={() => navigate('Register')}>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => navigate('SignIn')}>
                 <View style={styles.button_intro_view_skipButtom}>
                   <Text style={styles.Regular_16pt_white}>{L.skip}</Text>
-                  <Entypo
-                    name="arrow-long-right"
+                  <Icon
+                    type={'Entypo'}
+                    name={L.arrow_intro}
                     size={wp(2.7)}
                     color={white_color}
                     style={{marginStart: wp(2)}}
@@ -184,10 +202,13 @@ class Intro extends Component {
             ) : null}
 
             {activeSlide > 0 ? (
-              <TouchableOpacity onPress={() => this.carousel.snapToPrev()}>
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => this.carousel.snapToPrev()}>
                 <View style={styles.button_intro_view_4}>
-                  <MaterialCommunityIcons
-                    name="chevron-double-left"
+                  <Icon
+                    type={'MaterialCommunityIcons'}
+                    name={L.back_arrow}
                     size={wp(4)}
                     color={white_color}
                   />
@@ -197,17 +218,19 @@ class Intro extends Component {
             ) : null}
 
             <TouchableOpacity
+              activeOpacity={0.9}
               onPress={() => {
                 if (activeSlide == 0 || activeSlide != 2) {
                   this.carousel.snapToNext();
                 } else if (activeSlide == 2) {
-                  navigate('Register');
+                  navigate('SignIn');
                 }
               }}>
               <View style={styles.button_intro_view_5}>
                 <Text style={styles.Regular_16pt_white}>{L.next}</Text>
-                <MaterialCommunityIcons
-                  name="chevron-double-right"
+                <Icon
+                  type={'MaterialCommunityIcons'}
+                  name={L.next_arrow}
                   size={wp(4)}
                   color={white_color}
                 />

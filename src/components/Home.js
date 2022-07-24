@@ -8,6 +8,10 @@ import {
   ImageBackground,
   ScrollView,
   FlatList,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+  I18nManager,
 } from 'react-native';
 import {L} from '../config';
 import styles, {
@@ -21,6 +25,14 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {navigate} from '../NavigationActions';
 import {Input} from './Assets/common/';
+import {Main_Picker} from './Assets/common/Main_Picker';
+import countries from './Assets/JSON/countries.json';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 class Home extends Component {
   constructor(props) {
@@ -29,19 +41,27 @@ class Home extends Component {
       love: false,
       notification: true,
       search: null,
-      selected_page: null,
+      selected_page: 0,
+
+      DATA_Cate: [
+        {name: L.all},
+        {name: L.Latte},
+        {name: L.Espresso},
+        {name: L.Macchiato},
+        {name: L.irish_Coffee},
+      ],
       DATA: [
         {
           image: require('./Assets/image/dsc_08487.png'),
           name: 'Espresso',
           description: 'Enjoy the taste of natural coffee for a better day',
-          value: '25',
+          value: '35',
           id: 1,
         },
         {
           image: require('./Assets/image/dsc_08133_e.png'),
-          name: 'إسبرسو',
-          description: 'استمتع بطعم القهوة الطبيعية ليوم أفضل',
+          name: 'Latte',
+          description: 'Enjoy the taste of natural coffee for a better day',
           value: '25',
           id: 2,
         },
@@ -49,7 +69,7 @@ class Home extends Component {
           image: require('./Assets/image/dsc_08487.png'),
           name: 'Cappuchino',
           description: 'Enjoy the taste of natural coffee for a better day',
-          value: '25',
+          value: '27',
           id: 3,
         },
       ],
@@ -57,44 +77,79 @@ class Home extends Component {
   }
 
   SelectCategories = ({item, index}) => {
-    //STATE
-    const {DATA, add_cart} = this.state;
-    //PROPS
+    const {selected_page} = this.state;
 
-    //OTHER
-
-    const addToCart = (item, index) => {
-      DATA[index].add_cart = item.add_cart == 0 ? 1 : 0;
-      this.setState({DATA: DATA});
+    const isFocused = ({item, index}) => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+        this.setState({selected_page: index});
     };
+
+    return (
+      <View>
+        <TouchableOpacity
+          style={{
+            ...styles.categories_select,
+            borderBottomColor: selected_page === index ? white_color : null,
+          }}
+          onPress={() => isFocused({item, index})}
+          activeOpacity={0.9}>
+          <Text
+            style={{
+              ...styles.Regular_14pt_black,
+              color: selected_page === index ? white_color : gray_color,
+            }}>
+            {item.name}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  SelectItem = ({item, index}) => {
+    const addToCart = (item, index) => {
+      item.add_cart = item.add_cart == 0 ? 1 : 0;
+      this.setState({item: item});
+    };
+
     const isFavorite = (item, index) => {
-      DATA[index].isFavorite = item.isFavorite == 0 ? 1 : 0;
-      this.setState({DATA: DATA});
+      item.isFavorite = item.isFavorite == 0 ? 1 : 0;
+      this.setState({item: item});
     };
 
     const icon_love = item.isFavorite == 0 ? 'heart' : 'heart-o';
+
     return (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => navigate('ItemDetails')}
         style={{marginTop: hp(2)}}>
-        <Image source={item?.image} style={styles.image_categorie_flat_home} />
         <View style={styles.white_view_flat_home}>
-          <View style={styles.white_view_flat_home_1}>
+          <View>
+            <Image
+              source={item?.image}
+              style={[
+                styles.image_categorie_flat_home,
+                {transform: [{scaleX: I18nManager.isRTL ? -1 : 1}]},
+              ]}
+            />
+
             <View style={styles.des_white_view_flat_home}>
               <Text style={styles.Bold_14pt_black}>{item?.name}</Text>
               <Text style={[styles.Light_12pt_gray, styles.des_flat_home]}>
                 {item?.description}
               </Text>
             </View>
-            <View style={styles.black_view_icon_flat_home}>
-              <ImageBackground
-                borderRadius={wp(5)}
-                resizeMode={'cover'}
-                source={require('./Assets/image/group_2976.png')}
-                style={styles.black_image_icon_flat_home}
-              />
 
+            <View style={styles.black_view_value_flat_home}>
+              <Text style={[styles.AltBold_10pt_white, {marginEnd: wp(1)}]}>
+                {item?.value}
+              </Text>
+              <Text style={styles.AltBold_10pt_white}>{L.currency}</Text>
+            </View>
+          </View>
+
+          <View>
+            <View style={{flex: 1, ...styles.black_view_icon_flat_home}}>
               <TouchableOpacity
                 activeOpacity={1}
                 onPress={() => addToCart(item, index)}>
@@ -139,20 +194,6 @@ class Home extends Component {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{justifyContent: 'flex-end'}}>
-            <View style={styles.black_view_value_flat_home}>
-              <ImageBackground
-                borderRadius={wp(5)}
-                resizeMode={'cover'}
-                source={require('./Assets/image/group_2976.png')}
-                style={styles.black_image_value_flat_home}
-              />
-              <Text style={[styles.AltBold_10pt_white, {marginEnd: wp(1)}]}>
-                {item?.value}
-              </Text>
-              <Text style={styles.AltBold_10pt_white}>{L.currency}</Text>
-            </View>
-          </View>
         </View>
       </TouchableOpacity>
     );
@@ -160,7 +201,7 @@ class Home extends Component {
 
   render() {
     //STATE
-    const {search, selected_page, DATA} = this.state;
+    const {search, selected_page, DATA, DATA_Cate} = this.state;
 
     //PROPS
 
@@ -181,92 +222,16 @@ class Home extends Component {
           />
         </View>
 
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={styles.categories_select_view}>
-            <TouchableOpacity
-              style={{
-                ...styles.categories_select,
-                backgroundColor: selected_page == null ? white_color : null,
-              }}
-              onPress={() => this.setState({selected_page: null})}
-              activeOpacity={0.9}>
-              <Text
-                style={{
-                  ...styles.Regular_14pt_black,
-                  color: selected_page == null ? black_color : gray_color,
-                }}>
-                {L.all}
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                ...styles.categories_select,
-                backgroundColor: selected_page == 1 ? white_color : null,
-              }}
-              onPress={() => this.setState({selected_page: 1})}
-              activeOpacity={0.9}>
-              <Text
-                style={{
-                  ...styles.Regular_14pt_black,
-                  color: selected_page == 1 ? black_color : gray_color,
-                }}>
-                {L.Latte}
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                ...styles.categories_select,
-                backgroundColor: selected_page == 2 ? white_color : null,
-              }}
-              onPress={() => this.setState({selected_page: 2})}
-              activeOpacity={0.9}>
-              <Text
-                style={{
-                  ...styles.Regular_14pt_black,
-                  color: selected_page == 2 ? black_color : gray_color,
-                }}>
-                {L.Espresso}
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                ...styles.categories_select,
-                backgroundColor: selected_page == 3 ? white_color : null,
-              }}
-              onPress={() => this.setState({selected_page: 3})}
-              activeOpacity={0.9}>
-              <Text
-                style={{
-                  ...styles.Regular_14pt_black,
-                  color: selected_page == 3 ? black_color : gray_color,
-                }}>
-                {L.Macchiato}
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                ...styles.categories_select,
-                backgroundColor: selected_page == 4 ? white_color : null,
-              }}
-              onPress={() => this.setState({selected_page: 4})}
-              activeOpacity={0.9}>
-              <Text
-                style={{
-                  ...styles.Regular_14pt_black,
-                  color: selected_page == 4 ? black_color : gray_color,
-                }}>
-                {L.irish_Coffee}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
         <ScrollView showsVerticalScrollIndicator={false}>
-          {selected_page === null ? (
+          <FlatList
+            data={DATA_Cate}
+            horizontal={true}
+            renderItem={this.SelectCategories}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => index.toString()}
+          />
+
+          {selected_page === 0 ? (
             <View>
               <View style={styles.view_92}>
                 <View style={styles.titel_categorie}>
@@ -280,7 +245,7 @@ class Home extends Component {
               <FlatList
                 data={DATA}
                 showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
+                renderItem={this.SelectItem}
                 keyExtractor={(item, index) => index.toString()}
               />
               <View style={styles.view_92}>
@@ -294,43 +259,39 @@ class Home extends Component {
               <FlatList
                 data={DATA}
                 showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
+                renderItem={this.SelectItem}
                 keyExtractor={(item, index) => index.toString()}
               />
             </View>
           ) : selected_page === 1 ? (
-            <View>
-              <FlatList
-                data={DATA}
-                showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            </View>
+            <FlatList
+              data={DATA}
+              showsVerticalScrollIndicator={false}
+              renderItem={this.SelectItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
           ) : selected_page === 2 ? (
             <View>
               <FlatList
                 data={DATA}
                 showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
+                renderItem={this.SelectItem}
                 keyExtractor={(item, index) => index.toString()}
               />
             </View>
           ) : selected_page === 3 ? (
-            <View>
-              <FlatList
-                data={DATA}
-                showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            </View>
+            <FlatList
+              data={DATA}
+              showsVerticalScrollIndicator={false}
+              renderItem={this.SelectItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
           ) : selected_page === 4 ? (
             <View>
               <FlatList
                 data={DATA}
                 showsVerticalScrollIndicator={false}
-                renderItem={this.SelectCategories}
+                renderItem={this.SelectItem}
                 keyExtractor={(item, index) => index.toString()}
               />
             </View>

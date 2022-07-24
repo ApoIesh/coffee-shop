@@ -6,6 +6,9 @@ import {
   Text,
   ImageBackground,
   ScrollView,
+  LayoutAnimation,
+  Platform,
+  UIManager,
 } from 'react-native';
 import {L} from '../config';
 import styles, {
@@ -19,6 +22,18 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {navigate} from '../NavigationActions';
 import {Button, Input} from './Assets/common/';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
+if (Platform.OS === 'ios') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 class SignUp extends Component {
   constructor(props) {
@@ -58,19 +73,11 @@ class SignUp extends Component {
 
     return (
       <View style={styles.container_Primary}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.logo_text}>
-            <Text style={styles.custom_light_white_2}>{L.welcome_to}</Text>
-            <Text style={styles.custom_bold_white_2}>{'Cafe'}</Text>
-          </View>
-
-          <View style={styles.white_view_style}>
+        <View style={styles.white_view_style}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.view_88}>
-              <Text style={styles.Extrabold_20pt_black}>{L.sign_up}</Text>
               <View style={styles.sec_info}>
-                <Text style={[styles.Light_12pt_gray, {lineHeight: wp(5.2)}]}>
-                  {L.Please_fill}
-                </Text>
+                <Text style={styles.Extrabold_20pt_black}>{L.sign_up}</Text>
               </View>
 
               <Input
@@ -142,7 +149,12 @@ class SignUp extends Component {
 
               <View style={styles.agree_signUp_view_1}>
                 <TouchableOpacity
-                  onPress={() => this.setState({agrre: !agrre})}
+                  onPress={() => {
+                    LayoutAnimation.configureNext(
+                      LayoutAnimation.Presets.linear,
+                    ),
+                      this.setState({agrre: !agrre});
+                  }}
                   activeOpacity={0.9}
                   style={{
                     ...styles.agree_signUp_view_2,
@@ -177,21 +189,9 @@ class SignUp extends Component {
               <Button
                 onPress={() => navigate('TabComponent')}
                 activeOpacity={1}
-                marginTop={hp(2)}
+                marginTop={hp(8)}
                 width={wp(80)}
                 label={L.sign_up}
-                image={
-                  <ImageBackground
-                    resizeMode="cover"
-                    source={require('./Assets/image/group_2976.png')}
-                    borderRadius={wp(10)}
-                    style={{
-                      width: wp(80),
-                      height: hp(7),
-                      position: 'absolute',
-                    }}
-                  />
-                }
               />
               <View style={styles.if_you_have}>
                 <Text style={styles.Light_12pt_black}>
@@ -205,11 +205,9 @@ class SignUp extends Component {
                   </Text>
                 </TouchableOpacity>
               </View>
-              <View style={{height: hp(15)}} />
             </View>
-          </View>
-          <View style={{height: hp(15)}} />
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
     );
   }
