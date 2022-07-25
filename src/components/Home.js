@@ -131,19 +131,19 @@ class Home extends Component {
         style={{marginTop: hp(2)}}>
         <View style={styles.white_view_flat_home}>
           <View>
-          <View style={{
-            borderWidth: wp(0.5),
-          borderColor: white_color,
-          borderRadius: wp(5),
-          borderTopRightRadius: 0,
-        }}>
-            <Image
-              source={item?.image}
-              style={[
-                  styles.image_categorie_flat_home,
-                {transform: [{scaleX: I18nManager.isRTL ? -1 : 1}]},
-              ]}
-            />
+            <View
+              style={{
+                borderWidth: wp(0.5),
+                borderColor: white_color,
+                borderRadius: wp(5),
+                borderTopRightRadius: I18nManager.isRTL ? wp(5) : 0,
+                borderTopLeftRadius: I18nManager.isRTL ? 0 : wp(5),
+                transform: [{scaleX: I18nManager.isRTL ? -1 : 1}],
+              }}>
+              <Image
+                source={item?.image}
+                style={[styles.image_categorie_flat_home]}
+              />
             </View>
             <View style={styles.des_white_view_flat_home}>
               <Text style={styles.Bold_14pt_black}>{item?.name}</Text>
@@ -161,7 +161,7 @@ class Home extends Component {
           </View>
 
           <View>
-            <View style={{flex: 1, ...styles.black_view_icon_flat_home}}>
+            <View style={styles.black_view_icon_flat_home}>
               <TouchableOpacity
                 activeOpacity={1}
                 onPress={() => addToCart(item, index)}>

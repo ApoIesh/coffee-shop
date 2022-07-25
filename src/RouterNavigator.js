@@ -2,8 +2,7 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import ForgetPassword from './components/ForgetPassword';
 import Profile from './components/Profile';
@@ -111,14 +110,13 @@ function TabComponent() {
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
-              style={{flexDirection: 'row', marginEnd: wp(3)}}>
+              style={{marginEnd: wp(3)}}>
               <Image
                 source={require('./components/Assets/image/cart.png')}
                 style={{
-                  width: wp(4.3),
-                  height: wp(4.3),
+                  width: wp(5),
+                  height: wp(5),
                   resizeMode: 'contain',
-                  
                 }}
               />
             </TouchableOpacity>
@@ -150,15 +148,19 @@ function TabComponent() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <Icon
-                type={'FontAwesome5'}
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate(L.cart)}
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
               />
-            </View>
+            </TouchableOpacity>
           ),
         }}
       />
@@ -186,15 +188,19 @@ function TabComponent() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <Icon
-                type={'FontAwesome5'}
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate(L.cart)}
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
               />
-            </View>
+            </TouchableOpacity>
           ),
         }}
       />
@@ -223,15 +229,19 @@ function TabComponent() {
           headerTintColor: white_color,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <View style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <Icon
-                type={'FontAwesome5'}
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
-                onPress={() => navigate(L.cart)}
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigate(L.cart)}
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
               />
-            </View>
+            </TouchableOpacity>
           ),
         }}
       />
@@ -298,21 +308,27 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
           ),
           headerRight: () => (
-            <Icon
-              type={'FontAwesome5'}
-              size={wp(5.5)}
-              name="shopping-bag"
-              color={white_color}
+           <TouchableOpacity
+              activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
-            />
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
           ),
         })}
       />
@@ -339,21 +355,27 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
           ),
           headerRight: () => (
-            <Icon
-              type={'FontAwesome5'}
-              size={wp(5.5)}
-              name="shopping-bag"
-              color={white_color}
+            <TouchableOpacity
+              activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
-            />
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
           ),
         })}
       />
@@ -372,21 +394,27 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
           ),
           headerRight: () => (
-            <Icon
-              type={'FontAwesome5'}
-              size={wp(5.5)}
-              name="shopping-bag"
-              color={white_color}
+           <TouchableOpacity
+              activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
-            />
+              style={{marginEnd: wp(3)}}>
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(5),
+                  height: wp(5),
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
           ),
         })}
       />
@@ -405,9 +433,9 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
@@ -438,9 +466,9 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
@@ -462,9 +490,9 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigation.goBack()}
             />
@@ -495,9 +523,9 @@ export default function RouterNavigator() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <Icon
-              type={'FontAwesome5'}
+              type={'AntDesign'}
               size={wp(5)}
-              name={L.icon_back}
+              name={'left'}
               color={white_color}
               onPress={() => navigate('TabComponent')}
             />

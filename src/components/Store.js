@@ -13,6 +13,7 @@ import {L} from '../config';
 import styles, {black_color, hp, white_color, wp} from './Assets/style/styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { navigate } from '../NavigationActions';
 
 class Store extends Component {
   constructor(props) {

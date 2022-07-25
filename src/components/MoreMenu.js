@@ -10,7 +10,13 @@ import {
   Linking,
 } from 'react-native';
 import {L} from '../config';
-import styles, {black_color, hp, white_color, wp} from './Assets/style/styles';
+import styles, {
+  black_color,
+  hp,
+  white_color,
+  wp,
+  light_gray_color,
+} from './Assets/style/styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {navigate, reset} from '../NavigationActions';
 
@@ -33,7 +39,9 @@ class MoreMenu extends Component {
 
     return (
       <View style={styles.container_black}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={{marginTop: Platform.OS === 'ios' ? hp(5) : null}}
+          showsVerticalScrollIndicator={false}>
           <View style={styles.view_92}>
             <View style={{marginTop: hp(2)}}>
               <View style={styles.sec_image}>
@@ -147,6 +155,17 @@ class MoreMenu extends Component {
                 }}
               />
               <TouchableOpacity
+                style={{
+                  borderRadius: wp(5),
+                  backgroundColor: black_color,
+                  elevation: wp(2),
+                  shadowColor: light_gray_color,
+                  shadowOffset: {
+                    width: 0.5,
+                    height: 0.5,
+                  },
+                  shadowOpacity: wp(10),
+                }}
                 onPress={() => Linking.openURL('https://github.com/ApoIesh')}>
                 <Image
                   source={require('./Assets/image/git.png')}
@@ -161,6 +180,17 @@ class MoreMenu extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity
+                style={{
+                  borderRadius: wp(5),
+                  backgroundColor: black_color,
+                  elevation: wp(2),
+                  shadowColor: light_gray_color,
+                  shadowOffset: {
+                    width: 0.5,
+                    height: 0.5,
+                  },
+                  shadowOpacity: wp(10),
+                }}
                 onPress={() =>
                   Linking.openURL('https://www.facebook.com/M.H.aboaesh')
                 }>
@@ -171,6 +201,17 @@ class MoreMenu extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity
+                style={{
+                  borderRadius: wp(5),
+                  backgroundColor: black_color,
+                  elevation: wp(2),
+                  shadowColor: light_gray_color,
+                  shadowOffset: {
+                    width: 0.5,
+                    height: 0.5,
+                  },
+                  shadowOpacity: wp(10),
+                }}
                 onPress={() =>
                   Linking.openURL(
                     'https://www.linkedin.com/in/mohammed-hassan-mahmoud-3263801a9/',
@@ -183,6 +224,17 @@ class MoreMenu extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity
+                style={{
+                  borderRadius: wp(5),
+                  backgroundColor: black_color,
+                  elevation: wp(2),
+                  shadowColor: light_gray_color,
+                  shadowOffset: {
+                    width: 0.5,
+                    height: 0.5,
+                  },
+                  shadowOpacity: wp(10),
+                }}
                 onPress={() =>
                   Linking.openURL('https://twitter.com/MOHAMMEDAPOIESH')
                 }>
@@ -192,6 +244,17 @@ class MoreMenu extends Component {
                 />
               </TouchableOpacity>
               <TouchableOpacity
+                style={{
+                  borderRadius: wp(5),
+                  backgroundColor: black_color,
+                  elevation: wp(2),
+                  shadowColor: light_gray_color,
+                  shadowOffset: {
+                    width: 0.5,
+                    height: 0.5,
+                  },
+                  shadowOpacity: wp(10),
+                }}
                 onPress={() =>
                   Linking.openURL('https://www.instagram.com/apoiesh/')
                 }>

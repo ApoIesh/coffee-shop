@@ -16,14 +16,14 @@ export const rendererror = message => {
 export const L = new LocalizedStrings({en: en, ar: ar});
 export const changeLaguage = languageKey => {
   AsyncStorage.setItem('languageKey', languageKey);
-  if (languageKey == 'ar') {
+  if (languageKey == 'ar' || ar) {
     I18nManager.allowRTL(true);
     I18nManager.forceRTL(true);
     L.setLanguage(languageKey);
     if (!I18nManager.isRTL) {
       RNRestart.Restart();
     }
-  } else if (lang == 'en') {
+  } else if (lang == 'en' || en) {
     I18nManager.allowRTL(false);
     I18nManager.forceRTL(false);
     L.setLanguage(languageKey);

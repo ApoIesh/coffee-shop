@@ -4,7 +4,7 @@ export default {
 
   back_icon: 'chevron-back-outline',
   arrow_intro: 'arrow-long-right',
-  icon_back: 'chevron-left',
+  icon_back: 'left',
   icon_forward: 'chevron-right',
   arrow: 'arrow-back-sharp',
   next_arrow: 'chevron-double-right',

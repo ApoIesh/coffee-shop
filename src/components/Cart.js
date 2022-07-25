@@ -90,12 +90,17 @@ class Cart extends Component {
         <View
           style={{
             marginVertical: hp(3),
-            elevation: wp(2),
             backgroundColor: black_color,
-            shadowColor: white_color,
             paddingVertical: wp(4),
             paddingHorizontal: wp(2),
             borderRadius: wp(4),
+            elevation: wp(2),
+            shadowColor: white_color,
+            shadowOffset: {
+              width: 0.5,
+              height: 0.5,
+            },
+            shadowOpacity: 5,
           }}>
           <View style={styles.cardItem}>
             <View style={styles.imageCartView}>

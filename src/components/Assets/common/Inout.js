@@ -29,6 +29,7 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 }
+
 if (Platform.OS === 'ios') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -87,7 +88,7 @@ const Input = ({
           paddingVertical: paddingVertical ? paddingVertical : wp(1),
           height: height ? height : hp(6.5),
         }}>
-        {Platform.OS === 'android' ? left : right ? <View /> : null}
+        {Platform.OS === 'android' ? left : right ? right : <View />}
 
         <TextInput
           multiline={multiline}
@@ -126,7 +127,7 @@ const Input = ({
           }
         />
 
-        {Platform.OS === 'android' ? right : left ? <View /> : null}
+        {Platform.OS === 'android' ? right : left ? left : <View />}
       </View>
 
       {head_text ? (

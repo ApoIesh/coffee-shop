@@ -1,5 +1,5 @@
 'use strict';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {
   widthPercentageToDP,
   heightPercentageToDP,
@@ -818,6 +818,7 @@ const styles = StyleSheet.create({
   des_flat_home: {lineHeight: wp(4), marginVertical: wp(2), maxWidth: wp(70)},
 
   black_view_icon_flat_home: {
+    flex: 1,
     backgroundColor: Primary_color,
     paddingHorizontal: wp(3.2),
     paddingVertical: hp(1.5),
@@ -923,8 +924,8 @@ const styles = StyleSheet.create({
     elevation: wp(2),
     shadowColor: light_gray_color,
     shadowOffset: {
-      width: .5,
-      height: .5,
+      width: 0.5,
+      height: 0.5,
     },
     shadowOpacity: wp(10),
   },
@@ -936,9 +937,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'flex-end',
+    backgroundColor: black_color,
     elevation: wp(2),
     shadowColor: light_gray_color,
-    backgroundColor: black_color,
+    shadowOffset: {
+      width: 0.5,
+      height: 0.5,
+    },
+    shadowOpacity: wp(10),
   },
   line_end_flat_coffee: {
     borderWidth: wp(0.1),
@@ -1109,8 +1115,14 @@ const styles = StyleSheet.create({
     width: wp(14),
     height: wp(14),
     backgroundColor: black_color,
-    shadowColor: light_gray_color,
+    backgroundColor: black_color,
     elevation: wp(2),
+    shadowColor: light_gray_color,
+    shadowOffset: {
+      width: 0.5,
+      height: 0.5,
+    },
+    shadowOpacity: wp(10),
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: wp(15 / 2),
@@ -1491,11 +1503,16 @@ const styles = StyleSheet.create({
   cardItem: {flexDirection: 'row', justifyContent: 'space-between'},
   imageCartView: {
     borderRadius: wp(7),
-    elevation: wp(2),
-    shadowColor: white_color,
     backgroundColor: black_color,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: white_color,
+    elevation: 1,
+    shadowOffset: {
+      width: 0.2,
+      height: 0.2,
+    },
+    shadowOpacity: 2,
   },
   imageCart: {
     resizeMode: 'cover',
@@ -1594,6 +1611,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
     marginTop: hp(3),
+    marginBottom: Platform.OS === 'ios' ? hp(3) : 0,
   },
   total_sec: {
     alignSelf: 'flex-start',
