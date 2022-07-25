@@ -1,6 +1,11 @@
 module.exports = {
   dependency: {
-    platforms: {
+      'react-native-vector-icons': {
+           platforms: {
+             ios: null,
+           },
+         },
+  platforms: {
       android: null, // disable Android platform, other platforms will still autolink if provided
     },
   },

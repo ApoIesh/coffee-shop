@@ -798,10 +798,8 @@ const styles = StyleSheet.create({
   image_categorie_flat_home: {
     width: wp(75),
     height: hp(10),
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     alignSelf: 'center',
-    borderWidth: wp(0.5),
-    borderColor: white_color,
     borderRadius: wp(5),
     borderTopRightRadius: 0,
   },
@@ -923,12 +921,12 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: wp(2),
     backgroundColor: black_color,
     elevation: wp(2),
-    shadowColor: white_color,
+    shadowColor: light_gray_color,
     shadowOffset: {
-      width: wp(2),
-      height: wp(2),
+      width: .5,
+      height: .5,
     },
-    shadowOpacity: wp(100),
+    shadowOpacity: wp(10),
   },
   love_icon_view_flat_coffee: {
     borderColor: white_color,
@@ -939,7 +937,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'flex-end',
     elevation: wp(2),
-    shadowColor: white_color,
+    shadowColor: light_gray_color,
     backgroundColor: black_color,
   },
   line_end_flat_coffee: {

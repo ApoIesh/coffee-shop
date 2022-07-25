@@ -80,7 +80,7 @@ class SignIn extends Component {
                 placeholder={L.password_p}
                 onChangeText={password => this.setState({password})}
                 secureTextEntry={password_secure}
-                right={
+                left={
                   <Icon
                     type={'Feather'}
                     onPress={() =>

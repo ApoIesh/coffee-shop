@@ -29,6 +29,11 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 }
+if (Platform.OS === 'ios') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const Input = ({
   placeholder,
@@ -64,7 +69,9 @@ const Input = ({
   const [isFocused, setFocused] = React.useState(false);
 
   return (
-    <View>
+    <View style={{
+
+    }}>
       <View
         style={{
           direction: 'rtl',
@@ -103,7 +110,7 @@ const Input = ({
           keyboardType={keyboardType}
           style={{
             flex: 1,
-            alignSelf: 'flex-start',
+            // alignSelf: 'flex-start',
             // width: width ? width : wp(70),
             color: color ? color : text_color,
             fontFamily: fontRegular,

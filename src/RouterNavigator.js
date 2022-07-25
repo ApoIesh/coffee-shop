@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 
 import ForgetPassword from './components/ForgetPassword';
 import Profile from './components/Profile';
@@ -44,7 +46,7 @@ function TabComponent() {
     <Tab.Navigator
       initialRouteName={L.home}
       screenOptions={({route}) => ({
-        tabBarLabelStyle: {paddingBottom: hp(0.5), fontSize: wp(2.5)},
+        // tabBarLabelStyle: {paddingBottom: hp(0.5), fontSize: wp(2.5)},
         tabBarActiveTintColor: white_color,
         tabBarHideOnKeyboard: true,
         tabBarInactiveTintColor: 'gray',
@@ -56,7 +58,7 @@ function TabComponent() {
         ),
         tabBarStyle: {
           backgroundColor: '#020202',
-          height: hp(6),
+
           elevation: 0,
           borderTopWidth: 0,
         },
@@ -110,11 +112,14 @@ function TabComponent() {
               activeOpacity={0.9}
               onPress={() => navigate(L.cart)}
               style={{flexDirection: 'row', marginEnd: wp(3)}}>
-              <Icon
-                type={'FontAwesome5'}
-                size={wp(5.5)}
-                name="shopping-bag"
-                color={white_color}
+              <Image
+                source={require('./components/Assets/image/cart.png')}
+                style={{
+                  width: wp(4.3),
+                  height: wp(4.3),
+                  resizeMode: 'contain',
+                  
+                }}
               />
             </TouchableOpacity>
           ),
