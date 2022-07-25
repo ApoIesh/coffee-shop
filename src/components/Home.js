@@ -34,6 +34,12 @@ if (Platform.OS === 'android') {
   }
 }
 
+if (Platform.OS === 'ios') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
 class Home extends Component {
   constructor(props) {
     super(props);

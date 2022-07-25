@@ -69,9 +69,7 @@ const Input = ({
   const [isFocused, setFocused] = React.useState(false);
 
   return (
-    <View style={{
-
-    }}>
+    <View style={{}}>
       <View
         style={{
           direction: 'rtl',
@@ -89,7 +87,7 @@ const Input = ({
           paddingVertical: paddingVertical ? paddingVertical : wp(1),
           height: height ? height : hp(6.5),
         }}>
-        {left ? left : <View />}
+        {Platform.OS === 'android' ? left : right ? <View /> : null}
 
         <TextInput
           multiline={multiline}
@@ -128,7 +126,7 @@ const Input = ({
           }
         />
 
-        {right ? right : <View />}
+        {Platform.OS === 'android' ? right : left ? <View /> : null}
       </View>
 
       {head_text ? (
