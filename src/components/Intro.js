@@ -18,8 +18,6 @@ import styles, {
   white_color,
   wp,
 } from './Assets/style/styles';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {navigate} from '../NavigationActions';
 import Icon from './Assets/common/Icon';
 
@@ -139,13 +137,13 @@ class Intro extends Component {
       <View style={styles.container_Primary}>
         <View
           style={{
-            position: 'absolute',
+            marginTop: Platform.OS ? wp(5) : wp(1),
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}>
-          {this.pagination}
-        </View>
-        {activeSlide > 0 ? (
-          (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
-          (
+          <View>{this.pagination}</View>
+          {activeSlide > 0 ? (
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={() => navigate('SignIn')}>
@@ -162,10 +160,10 @@ class Intro extends Component {
                 </View>
               </View>
             </TouchableOpacity>
-          ))
-        ) : (
-          <View style={{height: hp(6)}} />
-        )}
+          ) : (
+            <View style={{height: hp(6)}} />
+          )}
+        </View>
 
         <Carousel
           autoplay={false}
@@ -179,7 +177,10 @@ class Intro extends Component {
           sliderWidth={wp(100)}
           itemWidth={wp(100)}
           renderItem={this.renderItem}
-          onSnapToItem={item => this.setState({activeSlide: item})}
+          onSnapToItem={item => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+              this.setState({activeSlide: item});
+          }}
         />
 
         <View style={styles.button_intro_view_1}>
@@ -204,7 +205,10 @@ class Intro extends Component {
             {activeSlide > 0 ? (
               <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => this.carousel.snapToPrev()}>
+                onPress={() => {
+                  LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+                    this.carousel.snapToPrev();
+                }}>
                 <View style={styles.button_intro_view_4}>
                   <Icon
                     type={'MaterialCommunityIcons'}
@@ -221,7 +225,8 @@ class Intro extends Component {
               activeOpacity={0.9}
               onPress={() => {
                 if (activeSlide == 0 || activeSlide != 2) {
-                  this.carousel.snapToNext();
+                  LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+                    this.carousel.snapToNext();
                 } else if (activeSlide == 2) {
                   navigate('SignIn');
                 }

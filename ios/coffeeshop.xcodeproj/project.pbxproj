@@ -17,7 +17,7 @@
 		60F5BBFF2F1047F8A0C55F9A /* Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0724DC3CAF904065B67DF5CD /* Proxima Nova Black.otf */; };
 		7160A73408C947EEA97AAB35 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43F057BB173346FCB14481A8 /* ProximaNova-Regular.otf */; };
 		7699B88040F8A987B510C191 /* libPods-coffeeshop-coffeeshopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-coffeeshop-coffeeshopTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		782BECC92890B51600EA171B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AAE12A1A15774144B1B01249 /* Proxima Nova Alt Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4880AF1492C547AEA02D771E /* Proxima Nova Alt Bold.otf */; };
 		AEA15FD060CF41A6A85DB84A /* Proxima Nova Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A776F00E54D418513EA2B /* Proxima Nova Thin.otf */; };
 		BA928C6C717A4458AEEA14BD /* Proxima Nova Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5F14A26A145433FB313ECA7 /* Proxima Nova Extrabold.otf */; };
@@ -274,10 +274,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				AAE12A1A15774144B1B01249 /* Proxima Nova Alt Bold.otf in Resources */,
 				D08787F466DE42D3862EEF94 /* Proxima Nova Alt Light.otf in Resources */,
+				782BECC92890B51600EA171B /* LaunchScreen.storyboard in Resources */,
 				51F6848844874029A805B36C /* Proxima Nova Alt Thin.otf in Resources */,
 				60F5BBFF2F1047F8A0C55F9A /* Proxima Nova Black.otf in Resources */,
 				5803CBF845214CE4BC898C52 /* Proxima Nova Bold.otf in Resources */,

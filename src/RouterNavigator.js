@@ -252,7 +252,7 @@ function TabComponent() {
 export default function RouterNavigator() {
   return (
     <Stack.Navigator
-      // initialRouteName={'TabComponent'}
+      initialRouteName={'Intro'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen
         component={LaunchScreen}

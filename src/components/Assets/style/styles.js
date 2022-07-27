@@ -809,14 +809,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
   },
-
   des_white_view_flat_home: {
     paddingStart: wp(5),
     marginTop: hp(0.5),
     alignItems: 'flex-start',
   },
-  des_flat_home: {lineHeight: wp(4), marginVertical: wp(2), maxWidth: wp(70)},
-
+  des_flat_home: {
+    lineHeight: wp(4),
+    marginVertical: wp(2),
+    maxWidth: wp(70),
+  },
   black_view_icon_flat_home: {
     flex: 1,
     backgroundColor: Primary_color,
@@ -830,7 +832,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-
   black_line_icon_flat_home: {
     borderWidth: wp(0.1),
     borderColor: light_gray_color,
@@ -875,7 +876,6 @@ const styles = StyleSheet.create({
     borderWidth: wp(0.4),
     borderColor: white_color,
   },
-
   black_view_value_flat_coffee: {
     backgroundColor: Primary_color,
     paddingHorizontal: wp(4),
