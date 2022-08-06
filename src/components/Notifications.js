@@ -263,47 +263,28 @@ class Notifications extends Component {
             justifyContent: 'space-between',
           }}>
           <Text style={[styles.Bold_14pt_gray, {color: white_color}]}>
-            {item.name}
+            {item?.name}
           </Text>
           <TouchableOpacity>
             <Text style={styles.Bold_14pt_black}>{'details'}</Text>
           </TouchableOpacity>
         </View>
         <View style={{alignSelf: 'flex-end', paddingVertical: wp(1.5)}}>
-          <Text style={[styles.Light_12pt_black]}>{item.time}</Text>
+          <Text style={[styles.Light_12pt_black]}>{item?.time}</Text>
         </View>
       </Animated.View>
     );
   };
 
   render() {
-    //STATE
     const {DATA, scrollEvent} = this.state;
 
-    //PROPS
-
-    //OTHER
-    const close = () => {
-      let filteredItems = DATA?.pop();
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
-        this.setState({DATA: filteredItems});
-    };
     return (
       <View style={styles.container_black}>
-        <TouchableOpacity
-          onPress={() => close.call(this)}
-          style={{
-            alignSelf: 'flex-end',
-            // position: 'absolute',
-            // marginTop: wp(-7),
-          }}>
-          <Text style={styles.AltBold_10pt_white}>Clear</Text>
-        </TouchableOpacity>
-
         <Animated.FlatList
           data={DATA}
           renderItem={this.renderNotifications}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item, index) => index?.toString()}
           showsVerticalScrollIndicator={false}
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {y: scrollEvent}}}],

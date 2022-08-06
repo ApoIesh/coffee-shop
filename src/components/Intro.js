@@ -1,25 +1,16 @@
 import React, {Component} from 'react';
 import {
-  StatusBar,
   TouchableOpacity,
   View,
   Text,
   Image,
-  ImageBackground,
   Platform,
   UIManager,
   LayoutAnimation,
 } from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {L} from '../config';
-import styles, {
-  hp,
-  Primary_color,
-  white_color,
-  wp,
-} from './Assets/style/styles';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import styles, {hp, white_color, wp} from './Assets/style/styles';
 import {navigate} from '../NavigationActions';
 import Icon from './Assets/common/Icon';
 
@@ -66,39 +57,14 @@ class Intro extends Component {
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}
-        renderDots={data => (
-          <View style={styles.pagination_view}>
-            <Image
-              source={
-                data == 0
-                  ? require('./Assets/image/bullet.png')
-                  : require('./Assets/image/inactive_bullets.png')
-              }
-              style={styles.pagination_image}
-            />
-            <Image
-              source={
-                data == 1
-                  ? require('./Assets/image/bullet.png')
-                  : require('./Assets/image/inactive_bullets.png')
-              }
-              style={styles.pagination_image}
-            />
-            <Image
-              source={
-                data == 2
-                  ? require('./Assets/image/bullet.png')
-                  : require('./Assets/image/inactive_bullets.png')
-              }
-              style={styles.pagination_image}
-            />
-          </View>
-        )}
-        inactiveDotOpacity={0.7}
-        inactiveDotScale={1.2}
-        animatedTension={100}
-        animatedDuration={300}
-        animatedFriction={20}
+        dotStyle={{
+          width: wp(3),
+          height: wp(3),
+          borderRadius: wp(3 / 2),
+          backgroundColor: white_color,
+        }}
+        inactiveDotOpacity={0.1}
+        inactiveDotScale={0.5}
       />
     );
   }
@@ -135,14 +101,10 @@ class Intro extends Component {
 
   render() {
     const {activeSlide, data} = this.state;
+
     return (
       <View style={styles.container_Primary}>
-        <View
-          style={{
-            position: 'absolute',
-          }}>
-          {this.pagination}
-        </View>
+        <View style={{position: 'absolute'}}>{this.pagination}</View>
         {activeSlide > 0 ? (
           (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
           (
@@ -201,27 +163,31 @@ class Intro extends Component {
               </TouchableOpacity>
             ) : null}
 
-            {activeSlide > 0 ? (
-              <TouchableOpacity
-                activeOpacity={0.9}
-                onPress={() => this.carousel.snapToPrev()}>
-                <View style={styles.button_intro_view_4}>
-                  <Icon
-                    type={'MaterialCommunityIcons'}
-                    name={L.back_arrow}
-                    size={wp(4)}
-                    color={white_color}
-                  />
-                  <Text style={styles.Regular_16pt_white}>{L.back}</Text>
-                </View>
-              </TouchableOpacity>
-            ) : null}
+            {activeSlide > 0
+              ? (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+                (
+                  <TouchableOpacity
+                    activeOpacity={0.9}
+                    onPress={() => this.carousel.snapToPrev()}>
+                    <View style={styles.button_intro_view_4}>
+                      <Icon
+                        type={'MaterialCommunityIcons'}
+                        name={L.back_arrow}
+                        size={wp(4)}
+                        color={white_color}
+                      />
+                      <Text style={styles.Regular_16pt_white}>{L.back}</Text>
+                    </View>
+                  </TouchableOpacity>
+                ))
+              : null}
 
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={() => {
                 if (activeSlide == 0 || activeSlide != 2) {
-                  this.carousel.snapToNext();
+                  LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+                    this.carousel.snapToNext();
                 } else if (activeSlide == 2) {
                   navigate('SignIn');
                 }

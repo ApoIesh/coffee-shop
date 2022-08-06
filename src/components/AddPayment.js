@@ -1,29 +1,9 @@
-import React, {Component} from 'react';
-import {
-  StatusBar,
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  ScrollView,
-  FlatList,
-} from 'react-native';
-import {L} from '../config';
-import styles, {
-  black_color,
-  border_Color,
-  gray_color,
-  hp,
-  light_gray_color,
-  Primary_color,
-  white_color,
-  wp,
-} from './Assets/style/styles';
+import React, { Component } from 'react';
+import { TouchableOpacity, View, Text, Image, ScrollView, FlatList } from 'react-native';
+import { L } from '../config';
+import styles, { black_color, white_color, wp, } from './Assets/style/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {navigate} from '../NavigationActions';
+import { navigate } from '../NavigationActions';
 import Icon from './Assets/common/Icon';
 
 class AddPayment extends Component {
@@ -33,39 +13,24 @@ class AddPayment extends Component {
       total: '21',
       select: false,
       DATA: [
-        {
-          image: require('./Assets/image/visa.png'),
-          isCheck: false,
-        },
-        {
-          image: require('./Assets/image/stc.png'),
-          isCheck: false,
-        },
-        {
-          image: require('./Assets/image/mada.png'),
-          isCheck: false,
-        },
-        {
-          image: require('./Assets/image/apple_pay.png'),
-          isCheck: false,
-        },
-        {
-          image: require('./Assets/image/cod.png'),
-          isCheck: false,
-        },
+        { image: require('./Assets/image/visa.png'), isCheck: false, },
+        { image: require('./Assets/image/stc.png'), isCheck: false, },
+        { image: require('./Assets/image/mada.png'), isCheck: false, },
+        { image: require('./Assets/image/apple_pay.png'), isCheck: false, },
+        { image: require('./Assets/image/cod.png'), isCheck: false, },
       ],
     };
   }
 
-  renderPayments = ({item, index}) => {
+  renderPayments = ({ item, index }) => {
     //STATE
-    const {select, DATA} = this.state;
+    const { select, DATA } = this.state;
     //PROPS
 
     //OTHER
     const isCheck = () => {
       DATA[index].isCheck = item.isCheck == false ? true : false;
-      this.setState({DATA: DATA});
+      this.setState({ DATA: DATA });
     };
     return (
       <View style={styles.sec_ren_card_pay}>
@@ -84,7 +49,7 @@ class AddPayment extends Component {
             </View>
           )}
         </TouchableOpacity>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <Image source={item?.image} style={styles.imageCard_pay} />
         </View>
       </View>
@@ -93,7 +58,7 @@ class AddPayment extends Component {
 
   render() {
     //STATE
-    const {total, DATA} = this.state;
+    const { total, DATA } = this.state;
     //PROPS
 
     //OTHER
@@ -105,7 +70,7 @@ class AddPayment extends Component {
               <Text style={styles.Bold_18pt_white}>{L.select_payment}</Text>
               <View style={styles.val_sec_pay}>
                 <Text style={styles.Regular_14pt_white}>{total}</Text>
-                <Text style={[styles.Regular_14pt_white, {marginStart: wp(1)}]}>
+                <Text style={[styles.Regular_14pt_white, { marginStart: wp(1) }]}>
                   {L.currency}
                 </Text>
               </View>

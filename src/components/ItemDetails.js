@@ -1,31 +1,8 @@
 import React, {Component} from 'react';
-import {
-  StatusBar,
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import {TouchableOpacity, View, Text, Image, ScrollView} from 'react-native';
 import {L} from '../config';
-import styles, {
-  black_color,
-  border_Color,
-  gray_color,
-  hp,
-  light_gray_color,
-  Primary_color,
-  white_color,
-  wp,
-} from './Assets/style/styles';
-import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import styles, {black_color, hp, white_color, wp} from './Assets/style/styles';
 import {navigate} from '../NavigationActions';
-import {Button, Input, CustomHeader} from './Assets/common/';
 import Icon from './Assets/common/Icon';
 
 class ItemDetails extends Component {
@@ -35,10 +12,8 @@ class ItemDetails extends Component {
       love: false,
       sel_shot: null,
       sel_milk: null,
-      sel_sweet: null,
       sel_ice: null,
       sel_quantity: 1,
-      sel_point: null,
       DATA: {
         image: require('./Assets/image/coffee-tab.png'),
         name: 'Ice Latte',
@@ -51,16 +26,7 @@ class ItemDetails extends Component {
 
   render() {
     //STATE
-    const {
-      DATA,
-      love,
-      sel_shot,
-      sel_milk,
-      sel_sweet,
-      sel_ice,
-      sel_quantity,
-      sel_point,
-    } = this.state;
+    const {DATA, love, sel_shot, sel_milk, sel_ice, sel_quantity} = this.state;
     //PROPS
 
     //OTHER
