@@ -10,7 +10,16 @@ import {
 } from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {L} from '../config';
+<<<<<<< HEAD
 import styles, {hp, white_color, wp} from './Assets/style/styles';
+=======
+import styles, {
+  hp,
+  Primary_color,
+  white_color,
+  wp,
+} from './Assets/style/styles';
+>>>>>>> d7b06a0f477d662d02411d6c953c69081f087122
 import {navigate} from '../NavigationActions';
 import Icon from './Assets/common/Icon';
 
@@ -104,10 +113,22 @@ class Intro extends Component {
 
     return (
       <View style={styles.container_Primary}>
+<<<<<<< HEAD
         <View style={{position: 'absolute'}}>{this.pagination}</View>
         {activeSlide > 0 ? (
           (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
           (
+=======
+        <View
+          style={{
+            marginTop: Platform.OS ? wp(5) : wp(1),
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <View>{this.pagination}</View>
+          {activeSlide > 0 ? (
+>>>>>>> d7b06a0f477d662d02411d6c953c69081f087122
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={() => navigate('SignIn')}>
@@ -124,10 +145,10 @@ class Intro extends Component {
                 </View>
               </View>
             </TouchableOpacity>
-          ))
-        ) : (
-          <View style={{height: hp(6)}} />
-        )}
+          ) : (
+            <View style={{height: hp(6)}} />
+          )}
+        </View>
 
         <Carousel
           autoplay={false}
@@ -141,7 +162,10 @@ class Intro extends Component {
           sliderWidth={wp(100)}
           itemWidth={wp(100)}
           renderItem={this.renderItem}
-          onSnapToItem={item => this.setState({activeSlide: item})}
+          onSnapToItem={item => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+              this.setState({activeSlide: item});
+          }}
         />
 
         <View style={styles.button_intro_view_1}>
@@ -163,6 +187,7 @@ class Intro extends Component {
               </TouchableOpacity>
             ) : null}
 
+<<<<<<< HEAD
             {activeSlide > 0
               ? (LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
                 (
@@ -181,6 +206,26 @@ class Intro extends Component {
                   </TouchableOpacity>
                 ))
               : null}
+=======
+            {activeSlide > 0 ? (
+              <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => {
+                  LayoutAnimation.configureNext(LayoutAnimation.Presets.linear),
+                    this.carousel.snapToPrev();
+                }}>
+                <View style={styles.button_intro_view_4}>
+                  <Icon
+                    type={'MaterialCommunityIcons'}
+                    name={L.back_arrow}
+                    size={wp(4)}
+                    color={white_color}
+                  />
+                  <Text style={styles.Regular_16pt_white}>{L.back}</Text>
+                </View>
+              </TouchableOpacity>
+            ) : null}
+>>>>>>> d7b06a0f477d662d02411d6c953c69081f087122
 
             <TouchableOpacity
               activeOpacity={0.9}
